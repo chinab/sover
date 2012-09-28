@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:bean="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd 
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       ">
+
+	<util:properties id="properties_jdbc" location="classpath:/jdbc.properties" />
+	<context:property-placeholder
+		properties-ref="properties_jdbc" />
+	<context:component-scan base-package="in.datashow" />
+
+	<task:scheduler id="threadPoolTaskScheduler" pool-size="80" />
+	<task:scheduled-tasks scheduler="threadPoolTaskScheduler">
+		<task:scheduled ref="fetchJob" method="fetch" cron="0 * * * * *" />
+	</task:scheduled-tasks>
+
+	<context:component-scan base-package="in.datashow.sover" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc_username}"></property>
+		<property name="password" value="${jdbc_password}"></property>
+		<property name="jdbcUrl" value="${jdbc_url}" />
+		<property name="driverClass" value="${jdbc_driver_class}" />
+
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+		destroy-method="destroy">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan" value="in.datashow.sover.orm"></property>
+	</bean>
+
+	<bean id="hibernateTransactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="autodetectDataSource" value="true"></property>
+	</bean>
+
+
+
+</beans>
