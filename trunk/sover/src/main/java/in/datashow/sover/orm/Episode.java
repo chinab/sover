@@ -36,7 +36,7 @@ public class Episode {
 	/*
 	 * 排序
 	 */
-	private int order;
+	private int orderSeq;
 	/*
 	 * 锁定排序
 	 */
@@ -77,12 +77,12 @@ public class Episode {
 		this.name = name;
 	}
 
-	public int getOrder() {
-		return order;
+	public int getOrderSeq() {
+		return orderSeq;
 	}
 
-	public void setOrder(int order) {
-		this.order = order;
+	public void setOrderSeq(int orderSeq) {
+		this.orderSeq = orderSeq;
 	}
 
 	public boolean isLockOrder() {
