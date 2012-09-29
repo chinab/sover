@@ -6,6 +6,6 @@ package in.datashow.sover.fetch;
  * @author YY
  * 
  */
-public class BasicEpisodeFetchConfig implements EpisodeFetchConfig {
-	private int min;
+public class BasicTeleplayFetchConfig implements TeleplayFetchConfig {
+	
 }

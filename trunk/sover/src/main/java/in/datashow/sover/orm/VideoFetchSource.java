@@ -2,9 +2,11 @@ package in.datashow.sover.orm;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,20 +17,21 @@ import org.hibernate.annotations.GenericGenerator;
  * 视频获取来源
  */
 @Entity
-@Table(name = "movie_fetch_source")
-public class MovieFetchSource {
+@Table(name = "video_fetch_source")
+public class VideoFetchSource {
 	/*
 	 * UUID
 	 */
 	private String uuid;
-	/*
-	 * 电影
+
+	/**
+	 * 视频
 	 */
-	private String movie;
+	private Video video;
 	/*
 	 * 来源
 	 */
-	private String source;
+	private VideoSource videoSource;
 	/*
 	 * 地址
 	 */
@@ -38,27 +41,16 @@ public class MovieFetchSource {
 	 */
 	private Date updatedAt;
 
-	/*
-	 * 最新的一集 UUID
-	 */
-	private String newestEpisode;
-
-	public String getMovie() {
-		return movie;
+	@ManyToOne
+	public Video getVideo() {
+		return video;
 	}
 
-	public void setMovie(String movie) {
-		this.movie = movie;
+	public void setVideo(Video video) {
+		this.video = video;
 	}
 
-	public String getSource() {
-		return source;
-	}
-
-	public void setSource(String source) {
-		this.source = source;
-	}
-
+	@Column(nullable = false)
 	public String getUrl() {
 		return url;
 	}
@@ -76,14 +68,6 @@ public class MovieFetchSource {
 		this.updatedAt = updatedAt;
 	}
 
-	public String getNewestEpisode() {
-		return newestEpisode;
-	}
-
-	public void setNewestEpisode(String newestEpisode) {
-		this.newestEpisode = newestEpisode;
-	}
-
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(strategy = "uuid", name = "system-uuid")
@@ -94,4 +78,14 @@ public class MovieFetchSource {
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
+
+	@ManyToOne(optional = false)
+	public VideoSource getVideoSource() {
+		return videoSource;
+	}
+
+	public void setVideoSource(VideoSource videoSource) {
+		this.videoSource = videoSource;
+	}
+
 }
