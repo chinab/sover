@@ -21,19 +21,19 @@ public class Movie {
 	/*
 	 * 名称
 	 */
-	private String name;
+	private String movieName;
 	/*
 	 * 描述
 	 */
-	private String desc;
+	private String movieDesc;
 	/*
 	 * 年份
 	 */
-	private int year;
+	private int publishYear;
 	/*
 	 * 演员
 	 */
-	private String[] actors;
+	private String actors;
 	/*
 	 * 类型
 	 */
@@ -50,38 +50,6 @@ public class Movie {
 		this.uuid = uuid;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDesc() {
-		return desc;
-	}
-
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public String[] getActors() {
-		return actors;
-	}
-
-	public void setActors(String[] actors) {
-		this.actors = actors;
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -89,4 +57,37 @@ public class Movie {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public String getMovieName() {
+		return movieName;
+	}
+
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
+	}
+
+	public String getMovieDesc() {
+		return movieDesc;
+	}
+
+	public void setMovieDesc(String movieDesc) {
+		this.movieDesc = movieDesc;
+	}
+
+	public int getPublishYear() {
+		return publishYear;
+	}
+
+	public void setPublishYear(int publishYear) {
+		this.publishYear = publishYear;
+	}
+
+	public String getActors() {
+		return actors;
+	}
+
+	public void setActors(String actors) {
+		this.actors = actors;
+	}
+
 }
