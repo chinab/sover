@@ -11,8 +11,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.sun.istack.internal.NotNull;
-
 /**
  * 视频获取来源
  */
@@ -70,7 +68,6 @@ public class MovieFetchSource {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@NotNull
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
