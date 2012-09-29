@@ -1,6 +1,11 @@
 package in.datashow.sover.orm;
 
+import in.datashow.sover.VideoType;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,8 +16,8 @@ import org.hibernate.annotations.GenericGenerator;
  * 视频
  */
 @Entity
-@Table(name = "movie")
-public class Movie {
+@Table(name = "video")
+public class Video {
 
 	/*
 	 * UUID
@@ -37,7 +42,7 @@ public class Movie {
 	/*
 	 * 类型
 	 */
-	private String type;
+	private VideoType videoType;
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -50,14 +55,16 @@ public class Movie {
 		this.uuid = uuid;
 	}
 
-	public String getType() {
-		return type;
+	@Enumerated(EnumType.STRING)
+	public VideoType getVideoType() {
+		return videoType;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setVideoType(VideoType videoType) {
+		this.videoType = videoType;
 	}
 
+	@Column(nullable = false)
 	public String getMovieName() {
 		return movieName;
 	}

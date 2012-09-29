@@ -1,14 +1,14 @@
 package in.datashow.sover.fetch.fetcher;
 
-import in.datashow.sover.fetch.MovieFetchStrategy;
-import in.datashow.sover.orm.Movie;
+import in.datashow.sover.fetch.strategy.VideoFetchStrategy;
+import in.datashow.sover.orm.Video;
 
 import java.util.List;
 
 /**
  * 新视频抓取实现
  */
-public interface MovieFetcher {
+public interface VideoFetcher {
 
 	/**
 	 * 自由抓取新电影
@@ -16,7 +16,7 @@ public interface MovieFetcher {
 	 * @param config
 	 * @return
 	 */
-	public List<Movie> fetchMovie(MovieFetchStrategy config);
+	public List<Video> fetchVideo(VideoFetchStrategy config);
 
 	/**
 	 * 定向抓取
@@ -24,5 +24,5 @@ public interface MovieFetcher {
 	 * @param url
 	 * @return
 	 */
-	public Movie fetchMovie(String url);
+	public Video fetchVideo(String url);
 }

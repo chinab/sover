@@ -1,11 +1,11 @@
 package in.datashow.sover.fetch;
 
 /**
- * 影视挖掘配置
+ * 剧集更新挖掘配置
  * 
  * @author YY
  * 
  */
-public interface MovieFetchStrategy {
-
+public interface TeleplayFetchConfig {
+	
 }
