@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * 电视剧实体(剧集 +数据源)
+ * 电视剧实体(剧集 +媒体源+信息源)
  * 
  * @author yangyan
  * 
@@ -18,10 +18,14 @@ import org.hibernate.annotations.GenericGenerator;
 @javax.persistence.Table(name = "teleplay_entity")
 public class TeleplayEntity {
 	private String uuid;
+	private String nativeId;
+	private String nativeCategory;
 	private Video video;
 	private Teleplay teleplay;
-	private VideoSource videoSource;
-	private String url;
+	private VideoFetchSource videoFetchSource;
+	private VideoMediaSource videoMediaSource;
+	private String mediaUrl;
+	private String playUrl;
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -53,21 +57,63 @@ public class TeleplayEntity {
 	}
 
 	@ManyToOne
-	public VideoSource getMovieSource() {
-		return videoSource;
+	public VideoMediaSource getVideoMediaSource() {
+		return videoMediaSource;
 	}
 
-	public void setMovieSource(VideoSource videoSource) {
-		this.videoSource = videoSource;
+	public void setVideoMediaSource(VideoMediaSource videoMediaSource) {
+		this.videoMediaSource = videoMediaSource;
 	}
 
 	@Column(nullable = false)
-	public String getUrl() {
-		return url;
+	public void setMediaUrl(String mediaUrl) {
+		this.mediaUrl = mediaUrl;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public String getMediaUrl() {
+		return mediaUrl;
+	}
+
+	public String getNativeId() {
+		return nativeId;
+	}
+
+	public void setNativeId(String nativeId) {
+		this.nativeId = nativeId;
+	}
+
+	public String getNativeCategory() {
+		return nativeCategory;
+	}
+
+	public void setNativeCategory(String nativeCategory) {
+		this.nativeCategory = nativeCategory;
+	}
+
+	@ManyToOne
+	public VideoMediaSource getVideoSource() {
+		return videoMediaSource;
+	}
+
+	public void setVideoSource(VideoMediaSource videoSource) {
+		this.videoMediaSource = videoSource;
+	}
+
+	@ManyToOne
+	public VideoFetchSource getVideoFetchSource() {
+		return videoFetchSource;
+	}
+
+	public void setVideoFetchSource(VideoFetchSource videoFetchSource) {
+		this.videoFetchSource = videoFetchSource;
+	}
+
+	public String getPlayUrl() {
+		return playUrl;
+	}
+
+	public void setPlayUrl(String playUrl) {
+		this.playUrl = playUrl;
 	}
 
 }

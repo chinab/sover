@@ -7,5 +7,5 @@ package in.datashow.sover;
  * 
  */
 public class SoverConstant {
-	
+
 }

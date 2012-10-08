@@ -7,16 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-
 /**
- * 视频来源
+ * 视频媒体来源
  */
-@Table(name = "video_source")
+@Table(name = "video_media_source")
 @Entity
-//@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
-public class VideoSource {
+// @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+public class VideoMediaSource {
 	private String name;
 	private int id;
 	private String urlPattern;
@@ -31,7 +28,7 @@ public class VideoSource {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	public int getId() {
 		return id;
 	}
