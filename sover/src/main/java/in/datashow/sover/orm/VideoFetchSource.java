@@ -29,10 +29,6 @@ public class VideoFetchSource {
 	 */
 	private Video video;
 	/*
-	 * 来源
-	 */
-	private VideoSource videoSource;
-	/*
 	 * 地址
 	 */
 	private String url;
@@ -77,15 +73,6 @@ public class VideoFetchSource {
 
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
-	}
-
-	@ManyToOne(optional = false)
-	public VideoSource getVideoSource() {
-		return videoSource;
-	}
-
-	public void setVideoSource(VideoSource videoSource) {
-		this.videoSource = videoSource;
 	}
 
 }

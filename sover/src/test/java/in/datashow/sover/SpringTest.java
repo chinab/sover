@@ -1,6 +1,6 @@
 package in.datashow.sover;
 
-import in.datashow.sover.orm.VideoSource;
+import in.datashow.sover.orm.VideoMediaSource;
 import in.datashow.sover.sys.Context;
 
 import org.hibernate.Session;
@@ -21,15 +21,15 @@ public class SpringTest {
 		Session session = sf.openSession();
 		session.beginTransaction();
 
-		int updated = session.createQuery("delete from VideoSource vs")
+		int updated = session.createQuery("delete from VideoMediaSource vs")
 				.executeUpdate();
 
 		System.out.println(updated);
 
-		VideoSource qvod = new VideoSource();
+		VideoMediaSource qvod = new VideoMediaSource();
 		qvod.setName("快播");
 		qvod.setUrlPattern("^gvod://.+");
-		VideoSource bdhd = new VideoSource();
+		VideoMediaSource bdhd = new VideoMediaSource();
 		bdhd.setName("百度影音");
 		bdhd.setUrlPattern("^bdhd://.+");
 		session.save(qvod);
@@ -54,7 +54,7 @@ public class SpringTest {
 
 	public static void main(String[] args) {
 		Context.init();
-		init();
+		init(); //生成数据库
 		Context.destroy();
 	}
 }

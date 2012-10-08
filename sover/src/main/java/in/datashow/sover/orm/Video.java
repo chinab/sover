@@ -2,18 +2,23 @@ package in.datashow.sover.orm;
 
 import in.datashow.sover.VideoType;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * 视频
+ * 视频信息（每部电影或电视剧只有一个）
  */
 @Entity
 @Table(name = "video")
@@ -26,11 +31,11 @@ public class Video {
 	/*
 	 * 名称
 	 */
-	private String movieName;
+	private String videoName;
 	/*
-	 * 描述
+	 * 介绍
 	 */
-	private String movieDesc;
+	private String videoIntroduce;
 	/*
 	 * 年份
 	 */
@@ -38,11 +43,21 @@ public class Video {
 	/*
 	 * 演员
 	 */
-	private String actors;
+	private Set<Actor> actors;
 	/*
 	 * 类型
 	 */
 	private VideoType videoType;
+
+	/*
+	 * 地区
+	 */
+	private Area area;
+
+	/*
+	 * 最新
+	 */
+	private Teleplay newest;
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -64,37 +79,56 @@ public class Video {
 		this.videoType = videoType;
 	}
 
-	@Column(nullable = false)
-	public String getMovieName() {
-		return movieName;
-	}
-
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
-	}
-
-	public String getMovieDesc() {
-		return movieDesc;
-	}
-
-	public void setMovieDesc(String movieDesc) {
-		this.movieDesc = movieDesc;
-	}
-
 	public int getPublishYear() {
 		return publishYear;
+	}
+
+	@Column(nullable = false)
+	public String getVideoName() {
+		return videoName;
+	}
+
+	public void setVideoName(String videoName) {
+		this.videoName = videoName;
+	}
+
+	public String getVideoIntroduce() {
+		return videoIntroduce;
+	}
+
+	public void setVideoIntroduce(String videoIntroduce) {
+		this.videoIntroduce = videoIntroduce;
+	}
+
+	public void setActors(Set<Actor> actors) {
+		this.actors = actors;
 	}
 
 	public void setPublishYear(int publishYear) {
 		this.publishYear = publishYear;
 	}
 
-	public String getActors() {
+	@ManyToMany(fetch = FetchType.LAZY)
+	public Set<Actor> getActors() {
 		return actors;
 	}
 
-	public void setActors(String actors) {
-		this.actors = actors;
+	@ManyToOne
+	public Area getArea() {
+		return area;
+	}
+
+	public void setArea(Area area) {
+		this.area = area;
+	}
+
+	@ManyToOne
+	public Teleplay getNewest() {
+		return newest;
+	}
+
+	public void setNewest(Teleplay newest) {
+		this.newest = newest;
 	}
 
 }
