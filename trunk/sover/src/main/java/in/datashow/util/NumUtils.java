@@ -1,6 +1,6 @@
 package in.datashow.util;
 
-public class NumUtil {
+public class NumUtils {
 
 	// / <summary>
 	// / 将中文数字转换成阿拉伯数字

@@ -20,6 +20,11 @@ import org.springframework.stereotype.Component;
 public class XunboFetcher implements Fetcher {
 	@Override
 	public ExploreJobResult explore(ExploreJob job) {
+
+		String 电影 = "http://www.2tu.cc/GvodHtml/15.html";
+		String 电视 = "http://www.2tu.cc/GvodHtml/16.html";
+		String 动画片 = "http://www.2tu.cc/GvodHtml/17.html";
+		String 综艺片 = "http://www.2tu.cc/GvodHtml/8.html";
 		return null;
 	}
 
