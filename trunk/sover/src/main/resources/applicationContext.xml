@@ -18,7 +18,7 @@
 
 	<task:scheduler id="threadPoolTaskScheduler" pool-size="80" />
 	<task:scheduled-tasks scheduler="threadPoolTaskScheduler">
-		<task:scheduled ref="fetchJob" method="fetch" cron="0 * * * * *" />
+		<task:scheduled ref="jobTrigger" method="fetch" cron="0 * * * * *" />
 	</task:scheduled-tasks>
 
 	<context:component-scan base-package="in.datashow.sover" />
@@ -38,7 +38,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.connection.useUnicode">true</prop>
 				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -55,6 +55,16 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 		<property name="autodetectDataSource" value="true"></property>
+	</bean>
+
+	<bean id="settings" class="in.datashow.sover.sys.Settings">
+		<property name="backupBaseDir" value="e:\\backup" />
+		<property name="picBaseDir" value="e:\\pics" />
+		<property name="url">
+			<array>
+				<value>http://localhost/soverweb/notice.action</value>
+			</array>
+		</property>
 	</bean>
 
 </beans>
