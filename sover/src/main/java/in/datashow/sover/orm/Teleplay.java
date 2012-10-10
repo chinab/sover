@@ -27,6 +27,11 @@ public class Teleplay {
 	 * 剧集名称
 	 */
 	private String name;
+
+	/*
+	 * 剧集介绍
+	 */
+	private String introduce;
 	/*
 	 * 排序
 	 */
@@ -67,6 +72,14 @@ public class Teleplay {
 	@ManyToOne(optional = false)
 	public Video getVideo() {
 		return video;
+	}
+
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
 	}
 
 }

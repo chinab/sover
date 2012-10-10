@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -32,6 +33,11 @@ public class Video {
 	 * 名称
 	 */
 	private String videoName;
+
+	/**
+	 * 别名
+	 */
+	private String[] aliases;
 	/*
 	 * 介绍
 	 */
@@ -55,9 +61,9 @@ public class Video {
 	private Area area;
 
 	/*
-	 * 最新
+	 * 剧集
 	 */
-	private Teleplay newest;
+	private Set<Teleplay> teleplaies;
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -108,7 +114,7 @@ public class Video {
 		this.publishYear = publishYear;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	public Set<Actor> getActors() {
 		return actors;
 	}
@@ -122,13 +128,21 @@ public class Video {
 		this.area = area;
 	}
 
-	@ManyToOne
-	public Teleplay getNewest() {
-		return newest;
+	public String[] getAliases() {
+		return aliases;
 	}
 
-	public void setNewest(Teleplay newest) {
-		this.newest = newest;
+	public void setAliases(String[] aliases) {
+		this.aliases = aliases;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY)
+	public Set<Teleplay> getTeleplaies() {
+		return teleplaies;
+	}
+
+	public void setTeleplaies(Set<Teleplay> teleplaies) {
+		this.teleplaies = teleplaies;
 	}
 
 }

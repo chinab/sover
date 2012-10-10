@@ -3,7 +3,6 @@ package in.datashow.sover.orm;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,6 +14,7 @@ import javax.persistence.Table;
 // @Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
 public class VideoMediaSource {
 	private String name;
+	private String[] aliases;
 	private int id;
 	private String urlPattern;
 
@@ -44,6 +44,14 @@ public class VideoMediaSource {
 
 	public void setUrlPattern(String urlPattern) {
 		this.urlPattern = urlPattern;
+	}
+
+	public String[] getAliases() {
+		return aliases;
+	}
+
+	public void setAliases(String[] aliases) {
+		this.aliases = aliases;
 	}
 
 }
