@@ -26,6 +26,7 @@ public class TeleplayEntity {
 	private VideoMediaSource videoMediaSource;
 	private String mediaUrl;
 	private String playUrl;
+	private boolean last;
 
 	@Id
 	@GeneratedValue(generator = "system-uuid")
@@ -114,6 +115,14 @@ public class TeleplayEntity {
 
 	public void setPlayUrl(String playUrl) {
 		this.playUrl = playUrl;
+	}
+
+	public boolean isLast() {
+		return last;
+	}
+
+	public void setLast(boolean last) {
+		this.last = last;
 	}
 
 }
