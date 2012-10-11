@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
- * 视频获取来源
+ * 视频信息获取来源
  */
 @Entity
 @Table(name = "video_fetch_source")
@@ -25,6 +25,11 @@ public class VideoFetchSource {
 	private String uuid;
 
 	/**
+	 * 所在网站
+	 */
+	private FetchSource fetchSource;
+
+	/**
 	 * 视频
 	 */
 	private Video video;
@@ -32,6 +37,10 @@ public class VideoFetchSource {
 	 * 地址
 	 */
 	private String url;
+	/**
+	 * 创建时间
+	 */
+	private Date createdAt;
 	/*
 	 * 最后更新时间
 	 */
@@ -75,4 +84,20 @@ public class VideoFetchSource {
 		this.uuid = uuid;
 	}
 
+	@ManyToOne
+	public FetchSource getFetchSource() {
+		return fetchSource;
+	}
+
+	public void setFetchSource(FetchSource fetchSource) {
+		this.fetchSource = fetchSource;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 }
