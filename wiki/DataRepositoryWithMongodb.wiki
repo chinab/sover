@@ -1,0 +1,1 @@
+打算将mongodb作为数据中心的数据库，可能会放弃使用hibernate。相对应的hibernate search 可能也不会使用
